@@ -10,7 +10,7 @@ headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/
 
 response = requests.get(url, headers=headers)
 
-#print(response.status_code)
+print(f'Status Code: {response.status_code}')
 
 texto = response.json() # recebe a requisição via API
 
@@ -24,25 +24,22 @@ top_dominios = conta_dominios.head(10)# Exibe os 10 primeiros
 
 plt.figure(figsize=(10, 6))
 
-#top_dominios.plot(kind='bar')#cria um gráfico de barras
+top_dominios.plot(kind='bar')#cria um gráfico de barras
 
-#plt.show() # plota um gráfico de barras com os 10 dominios mais populares
+plt.show() # plota um gráfico de barras com os 10 dominios mais populares
 
 df_comentario['tamanho_dos_comentarios'] = df_comentario['body'].str.len()
 
 
 principais_estatisticas = df_comentario['tamanho_dos_comentarios'].describe()
 
-#print(principais_estatisticas) #exibe as principais estatisticas sobre os comentarios como média, max, minimo e afins.
+print(principais_estatisticas) #exibe as principais estatisticas sobre os comentarios como média, max, minimo e afins.
 
 histograma_teste = df_comentario['tamanho_dos_comentarios'].hist()
-
-#plt.figure(figsize=(10, 6))
 
 histograma_teste.plot(kind='bar')
 
 #plt.show() #plotagem do histograma dos comentarios
-
 
 inicial = time.time()
 
